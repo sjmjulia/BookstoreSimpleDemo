@@ -28,8 +28,6 @@ class HttpHelper: NSObject {
     class func requestGETURL(_ strURL: String, success:@escaping ([String: Any]) -> Void, failure:@escaping (Error) -> Void) {
         Alamofire.request(strURL).responseJSON { (responseObject) -> Void in
             
-//            print(responseObject)
-            
             if responseObject.result.isSuccess {
                 let resJson = JSON(responseObject.result.value!)
 //                print(resJson.stringValue)
@@ -41,21 +39,7 @@ class HttpHelper: NSObject {
             }
         }
     }
-//    class func requestGETURL(_ strURL: String, success:@escaping (JSON) -> Void, failure:@escaping (Error) -> Void) {
-//        Alamofire.request(strURL).responseJSON { (responseObject) -> Void in
-//            
-//            print(responseObject.result.value!)
-//            
-//            if responseObject.result.isSuccess {
-//                let resJson = JSON(responseObject.result.value!)
-//                success(resJson)
-//            }
-//            if responseObject.result.isFailure {
-//                let error : Error = responseObject.result.error!
-//                failure(error)
-//            }
-//        }
-//    }
+
     
     /// send request with parameters with GET method
     ///
@@ -131,17 +115,5 @@ class HttpHelper: NSObject {
             }
         }
     }
-    
-//    static func jsonToString(json: AnyObject)-> String{
-//        do {
-//            let data1 =  try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted) // first of all convert json to the data
-//            let convertedString = String(data: data1, encoding: String.Encoding.utf8) // the data will be converted to the string
-//            return convertedString! // <-- here is ur string
-//            
-//        } catch let myJSONError {
-//            print(myJSONError)
-//        }
-//        return ""
-//    }
 
 }
